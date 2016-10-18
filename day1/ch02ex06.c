@@ -1,17 +1,24 @@
 #include <stdio.h>
 #include <math.h>
-double main()
+double quad(double a, double b, double c);
+
+double quad(double a, double b, double c)
 {
- double p = 200000,i = 7.5, n= 30;
- double j = i / (12 * 100);
+ double bpow = pow(b,2);
+ double root = sqrt((bpow - (4 * a * c)));
+ double answer = (-b + root) / (2 * a);
 
- double m = p * (j / (1 - ((1 + j)  - n)));
+ return(answer);
+}
 
+
+
+int main(void)
+{
+ double a = 3.0,  b = 4.0,  c = 1.0;
  
- printf("The total monthly payment is : %f\n", m);
- 
- 
+ double e = quad(a, b, c);
 
-
+ printf("I hate math %f\n", e);  
 
 }
