@@ -19,6 +19,6 @@ int main(void)
  
  double e = quad(a, b, c);
 
- printf("I hate math %f\n", e);  
+ printf("I hate math %lf\n", e);  
 
 }

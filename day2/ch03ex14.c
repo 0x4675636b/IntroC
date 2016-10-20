@@ -19,12 +19,12 @@ int gov_positions(int age, int years_citizen)
 	} else {
 	printf("Not eligible for house \n");
 	}
-		
+	
 }
 int main(void)
 {
 	
-	int a =  gov_positions(57, 14), b = gov_positions(69,69);
+	int a = gov_positions(57, 14), b = gov_positions(69,69);
 	printf("%d", a);
 	printf("%d", b);
 }
