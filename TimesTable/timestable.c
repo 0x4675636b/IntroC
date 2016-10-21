@@ -20,15 +20,22 @@ int main(int argc, char *argv[])
 	} else if(argc == 3){
 		max = strtol(argv[2], NULL, 10);
 		min = strtol(argv[1], NULL, 10);
-	 }
+	}
 
 	if((row > 100) ||  (row <= 0)){
 		printf("Usage %s <value> \n", argv[0]);
 		return 1;		
 	} else if ((column > 100) || (column <= 0)){
-		printf("Usage %s <value \n", argv[0]);
+		printf("Usage %s <value> \n", argv[0]);
 		return 1;
 	} 
+	if(max > 100 || max < min){
+		printf("Usage %s <value> \n", argv[0]);
+		return 1;
+	}
+
+
+
 	
 	if(argc == 1){
 		printf("%d", print_table(column, row));
@@ -43,20 +50,20 @@ int print_table(int column, int row)
 	int result;		
 	char print = '*';
 	
-	printf("%3c", print);
+	printf("%4c", print);
 	// Print first times table row
 	for(int count = 1; count <= row; ++count){
-		printf("%3d", count);
+		printf("%4d", count);
 		if(count == row){
 			printf("\n");
 			}
 		}
 		
 	for(int count = 1; count <= row; ++count){
-			printf("%3d", count);
+			printf("%4d", count);
 		for(int count2 = 1; count2 <= column; ++count2){
 				result = count * count2; 
-				printf("%3d", result);
+				printf("%4d", result);
 		
 			}
 			printf("\n");
