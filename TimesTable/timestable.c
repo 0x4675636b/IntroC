@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
+bool value_check(int row, int column);
 int get_width(int max_val);
 int print_table(int column, int row);
 int min_max(int row, int column);
@@ -21,20 +23,14 @@ int main(int argc, char *argv[])
 		column = strtol(argv[2], NULL, 10);
 		row = strtol(argv[1], NULL, 10);
 	}
-
-	//Ensure a value greater than 100 and a value less than 0 cannot be entered
-	if((row > 100) ||  (row <= 0)){
-		printf("Usage %s <value> \n", argv[0]);
-		return 1;		
-	} else if ((column > 100) || (column <= 0)){
-		printf("Usage %s <value> \n", argv[0]);
-		return 1;
-	} else if(row > column){
-		printf("Usage %s <value< \n", argv[0]);
-		return 1;
+	
+	if(value_check(row, column)){
+			printf("Usage %s <value< \n", argv[0]);
+			return 1;
 	}
 
-	//Depending on amount of arguments entered. print the various tables
+
+//Depending on amount of arguments entered. print the various tables
 	if(argc == 1){
 		printf("%d", print_table(column, row));
 	} else if(argc == 2){
@@ -44,7 +40,20 @@ int main(int argc, char *argv[])
 	}
 }
 
-
+bool value_check(int row, int column)
+{
+	//Function checks values entered at the command line to ensure validity
+	//Ensure a value greater than 100 and a value less than 0 cannot be entered
+	if((row > 100) ||  (row <= 0)){
+		return 1;		
+	} else if ((column > 100) || (column <= 0)){
+		return 1;
+	} else if(row > column){
+		return 1;
+	} 
+	return 0;
+}
+	
 int print_table(int column, int row)
 {	
 	//Default table for printing multiplication table
@@ -53,17 +62,17 @@ int print_table(int column, int row)
 	char print = '*';
 	printf("%3c", print);
 	// Print *for the first times table row
-	for(int count = 1; count <= row; ++count){
-		printf("%3d", count);	
-		if(count == row){
+	for(int i = 1; i <= row; ++i){
+		printf("%3d", i);	
+		if(i == row){
 			printf("\n");
 		}
 	}		
 	// print the inner multiplication table
-	for(int count = 1; count <= row; ++count){
-			printf("%3d", count);
-		for(int count2 = 1; count2 <= column; ++count2){
-				result = count * count2; 
+	for(int i = 1; i <= row; ++i){
+			printf("%3d", i);
+		for(int j = 1; j <= column; ++j){
+				result = i * j; 
 				printf("%3d", result);
 		
 		}
@@ -84,17 +93,17 @@ int min_max(int row,  int column)
 
 	printf("%*c", print_width, print);
 	// Print first times table row
-	for(int counter = row; counter <= column; ++counter){		
-		printf("%*d", print_width, counter);
-		if(counter == column){
+	for(int i = row; i <= column; ++i){		
+		printf("%*d", print_width, i);
+		if(i == column){
 			printf("\n");
 		}
 	}
 
-	for(int count = row; count <= column; ++count){
-			printf("%*d", print_width, count);
-		for(int count2 = row; count2 <= column; ++count2){
-				result = count * count2; 
+	for(int i = row; i <= column; ++i){
+			printf("%*d", print_width, i);
+		for(int j = row; j <= column; ++j){
+				result = i * j; 
 				//Print variable width for max count
 				printf("%*d", print_width, result);
 		}
