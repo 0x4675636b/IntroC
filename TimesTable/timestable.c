@@ -7,24 +7,24 @@ int main(int argc, char *argv[])
 {
 	int row = 10, column = 10;
 	
-	printf("%d", print_table(column, row));
 
-	if(argc != 2) {
+	if(argc > 2) {
 		printf("Usage %s <value> \n", argv[0]);
 		return 1;
-	} else if(argc == 1) {
+	} else if(argc == 2) {	
 		column = strtol(argv[1], NULL, 10);
-		row = strtol(argv[1], NULL, 10);
+		row = strtol(argv[1],NULL, 10);
+	}
+
+	if((row > 100) ||  (row < 0)){
+		printf("Usage %s <value> \n", argv[0]);
+		return 1;		
+	} else if ((column > 100) || (column < 0)){
+		printf("Usage %s <value \n", argv[0]);
 		return 1;
 	}
 	
-	/*if((row > 100) ||  (row < 0)){
-		printf("Usage %s <value> \n", argv[0]);
-		
-	} else if ((column > 100) || (column < 0)){
-		printf("Usage %s <value \n", argv[0]);
-		
-	}*/
+	printf("%d", print_table(column, row));
 }	
 int print_table(int column, int row)
 {	
