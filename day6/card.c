@@ -29,3 +29,12 @@ bool card_format(char output[], size_t sz, struct card c)
 
 		return true;
 }
+
+int card_cmp(struct card a, struct card b)
+{
+	if(a.suit > b.suit) {
+		
+	}
+
+
+}

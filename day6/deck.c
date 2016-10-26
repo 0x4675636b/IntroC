@@ -31,4 +31,26 @@ struct deck deck_create(void)
 		}
 	}
 		return d;
+
+}
+
+void deck_shuffle(struct deck d)
+{
+	int i; 
+	int j;
+
+	j = rand() % 52;
+	temp = d[i];
+	d[i] = temp[j]
+	d[j] = temp;
+} 
+void deal(struct cards[], struct deck d)
+{
+	int i;
+	for(i = 0; i <= 51; i++){
+		printf("%5s of %-8s%s", deck[i].face, deck[i].suit,
+				(i + 1) % 4 ? " " : "\n");
+	}
+}
+
 }
