@@ -27,18 +27,16 @@ int main(int argc, char *argv[])
 	}
 	int c;
 	char a;
-	char buf[128];
+	char buf1[128];
 
+	
 	if(!strcmp(argv[1], "glue")) {
-		c = fgetc(fp1);
-		do { 
-			a = fgetc(fp1);
-			fputc(c, fp2);
-						
-		} while(a != EOF);
-		
-		while(fscanf(fp1, "%s", buf) != EOF) {
-			printf("%s\n", buf);
+		{
+		while(fgets(buf1, sizeof(buf1), fp1)) {
+			fputs(buf1, stdout); 			
+		}
+		while(fgets(buf1, sizeof(buf1), fp2)) {
+			fputs(buf1, stdout);
 		}
 
 	}
@@ -56,6 +54,6 @@ fp1_cleanup:
 leave:
 	return ret_code;
 
-}	
+	}		
 
-
+}
